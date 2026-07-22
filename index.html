@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JSY Laboratory | National Taiwan University</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2937;
+      line-height: 1.7;
+      background: #f8fafc;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 8%;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #0f3d68;
+    }
+
+    nav a {
+      margin-left: 22px;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      min-height: 74vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 10%;
+      color: white;
+      background:
+        linear-gradient(120deg, rgba(7, 37, 67, 0.96), rgba(15, 87, 126, 0.82)),
+        url("images/lab-background.jpg") center/cover;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      margin-bottom: 12px;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      color: #0f3d68;
+      background: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 30px 24px 80px;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: 2.2rem;
+      color: #0f3d68;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 34px;
+      color: #64748b;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 26px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #1d4f7a;
+    }
+
+    .member {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .member-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #dbeafe;
+    }
+
+    .publication {
+      margin-bottom: 18px;
+      padding: 18px 22px;
+      background: white;
+      border-left: 5px solid #2563eb;
+      border-radius: 5px;
+    }
+
+    .contact {
+      padding: 36px;
+      color: white;
+      background: #0f3d68;
+      border-radius: 12px;
+    }
+
+    footer {
+      padding: 25px;
+      color: #cbd5e1;
+      text-align: center;
+      background: #071d30;
+    }
+
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .member {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">JSY Laboratory</div>
+
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#members">Members</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>JSY Laboratory</h1>
+
+      <p>
+        Department of Chemistry, National Taiwan University
+      </p>
+
+      <p>
+        We explore molecular structures, functional materials,
+        chemical dynamics and emerging phenomena through
+        experimental and computational approaches.
+      </p>
+
+      <a class="button" href="#research">Explore Our Research</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <h2>About the Laboratory</h2>
+
+      <p class="section-intro">
+        Introduce the laboratory's research vision, history and
+        scientific goals here. This paragraph can later be replaced
+        with the formal laboratory introduction.
+      </p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+
+      <p class="section-intro">
+        Briefly introduce the major research directions of the laboratory.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Functional Materials</h3>
+          <p>
+            Design and characterization of molecular and crystalline
+            materials with stimulus-responsive properties.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Structural Dynamics</h3>
+          <p>
+            Investigation of structural transformations using diffraction,
+            spectroscopy and time-resolved measurements.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Computational Chemistry</h3>
+          <p>
+            First-principles calculations and molecular simulations
+            for understanding structure–property relationships.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="members">
+      <h2>Members</h2>
+
+      <div class="card member">
+        <img
+          class="member-photo"
+          src="images/professor.jpg"
+          alt="Principal investigator"
+        >
+
+        <div>
+          <h3>Prof. Jye-Shane Yang</h3>
+          <p>Principal Investigator</p>
+          <p>
+            Add the professor's education, research interests,
+            professional experience and contact information here.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+
+      <div class="publication">
+        <strong>Publication title</strong><br>
+        Author A, Author B and Author C,
+        <em>Journal Name</em>, 2026.
+      </div>
+
+      <div class="publication">
+        <strong>Publication title</strong><br>
+        Author A, Author B and Author C,
+        <em>Journal Name</em>, 2025.
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <h2 style="color: white;">Contact</h2>
+
+        <p>
+          Department of Chemistry<br>
+          National Taiwan University<br>
+          Taipei, Taiwan
+        </p>
+
+        <p>
+          Email:
+          <a href="mailto:example@ntu.edu.tw" style="color: white;">
+            example@ntu.edu.tw
+          </a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 JSY Laboratory, National Taiwan University
+  </footer>
+
+</body>
+</html>
