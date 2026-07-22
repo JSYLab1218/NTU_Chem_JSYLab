@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8e7ef"/><stop offset="1" stop-color="#7baac2"/></linearGradient></defs>
-<rect width="700" height="700" fill="url(#g)"/>
-<circle cx="350" cy="270" r="125" fill="#f5fbff"/>
-<path d="M120 700 C140 470 250 410 350 410 C450 410 560 470 580 700" fill="#f5fbff"/>
-<text x="350" y="650" text-anchor="middle" fill="#355872" font-size="34" font-family="Arial">Replace with professor.jpg</text>
-</svg>

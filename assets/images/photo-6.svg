@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="675" viewBox="0 0 900 675">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163954"/><stop offset="1" stop-color="#76b9c9"/></linearGradient></defs>
-<rect width="900" height="675" fill="url(#g)"/>
-<circle cx="660" cy="340" r="90" fill="#fff" opacity=".16"/>
-<path d="M0 540 L220 340 L380 470 L580 250 L900 560 V675 H0Z" fill="#fff" opacity=".22"/>
-<text x="450" y="610" text-anchor="middle" fill="#fff" font-size="42" font-family="Arial">PHOTO 6</text>
-</svg>
