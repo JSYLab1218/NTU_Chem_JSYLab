@@ -476,6 +476,44 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		<div class="wsite-section-content">
           <div class="container">
 			<div class="wsite-section-elements">
+				<h2 class="wsite-content-title">2026</h2>
+
+<div><div style="height:20px;overflow:hidden"></div>
+<div class="native-photo-gallery" id="gallery-2026" tabindex="0" data-github-folder="2026photo">
+  <div class="native-photo-stage">
+    <button class="native-photo-button native-photo-prev" type="button" aria-label="Previous photo" disabled>&#10094;</button>
+    <img class="native-photo-main" alt="2026 lab photograph" loading="lazy" hidden />
+    <button class="native-photo-button native-photo-next" type="button" aria-label="Next photo" disabled>&#10095;</button>
+  </div>
+  <div class="native-photo-status" aria-live="polite">Loading photos...</div>
+  <div class="native-photo-thumbnails" aria-label="2026 photo thumbnails"></div>
+</div>
+
+<div style="height:20px;overflow:hidden"></div></div>
+
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+<hr class="styled-hr" style="width:100%;"></hr>
+<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+
+<h2 class="wsite-content-title">2025</h2>
+
+<div><div style="height:20px;overflow:hidden"></div>
+<div class="native-photo-gallery" id="gallery-2025" tabindex="0" data-github-folder="2025photo">
+  <div class="native-photo-stage">
+    <button class="native-photo-button native-photo-prev" type="button" aria-label="Previous photo" disabled>&#10094;</button>
+    <img class="native-photo-main" alt="2025 lab photograph" loading="lazy" hidden />
+    <button class="native-photo-button native-photo-next" type="button" aria-label="Next photo" disabled>&#10095;</button>
+  </div>
+  <div class="native-photo-status" aria-live="polite">Loading photos...</div>
+  <div class="native-photo-thumbnails" aria-label="2025 photo thumbnails"></div>
+</div>
+
+<div style="height:20px;overflow:hidden"></div></div>
+
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+<hr class="styled-hr" style="width:100%;"></hr>
+<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+
 				<h2 class="wsite-content-title">2024</h2>
 
 <div><div style="height:20px;overflow:hidden"></div>
@@ -1084,26 +1122,110 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 (function () {
   "use strict";
 
-  function initialiseGallery(gallery) {
+  var GITHUB_OWNER = "JSYLab1218";
+  var GITHUB_REPOSITORY = "jsylab1218.github.io";
+  var GITHUB_BRANCH = "main";
+  var IMAGE_EXTENSION = /\.(?:avif|gif|jpe?g|png|webp)$/i;
+
+  function encodePath(path) {
+    return path.split("/").map(encodeURIComponent).join("/");
+  }
+
+  function naturalFileSort(a, b) {
+    return a.name.localeCompare(b.name, undefined, {
+      numeric: true,
+      sensitivity: "base"
+    });
+  }
+
+  function readEmbeddedImages(gallery) {
     var dataNode = gallery.querySelector(".native-photo-data");
+    if (!dataNode) return null;
+
+    try {
+      return JSON.parse(dataNode.textContent);
+    } catch (error) {
+      throw new Error("Cannot read the embedded gallery data.");
+    }
+  }
+
+  async function readGitHubFolder(folder) {
+    var apiUrl =
+      "https://api.github.com/repos/" +
+      encodeURIComponent(GITHUB_OWNER) + "/" +
+      encodeURIComponent(GITHUB_REPOSITORY) +
+      "/contents/" + encodePath(folder) +
+      "?ref=" + encodeURIComponent(GITHUB_BRANCH);
+
+    var response = await fetch(apiUrl, {
+      cache: "no-store",
+      headers: {
+        "Accept": "application/vnd.github+json"
+      }
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Folder not found: " + folder);
+      }
+      throw new Error("GitHub returned HTTP " + response.status + ".");
+    }
+
+    var entries = await response.json();
+    if (!Array.isArray(entries)) {
+      throw new Error(folder + " is not a folder.");
+    }
+
+    return entries
+      .filter(function (entry) {
+        return entry.type === "file" && IMAGE_EXTENSION.test(entry.name);
+      })
+      .sort(naturalFileSort)
+      .map(function (entry) {
+        return {
+          url: encodePath(folder) + "/" + encodeURIComponent(entry.name),
+          caption: entry.name
+        };
+      });
+  }
+
+  async function getGalleryImages(gallery) {
+    var embeddedImages = readEmbeddedImages(gallery);
+    if (embeddedImages) return embeddedImages;
+
+    var folder = gallery.getAttribute("data-github-folder");
+    if (!folder) return [];
+
+    return readGitHubFolder(folder);
+  }
+
+  async function initialiseGallery(gallery) {
     var mainImage = gallery.querySelector(".native-photo-main");
     var status = gallery.querySelector(".native-photo-status");
     var thumbnails = gallery.querySelector(".native-photo-thumbnails");
     var previous = gallery.querySelector(".native-photo-prev");
     var next = gallery.querySelector(".native-photo-next");
-    var images;
+    var images = [];
     var current = 0;
 
-    try {
-      images = JSON.parse(dataNode.textContent);
-    } catch (error) {
-      console.error("Cannot read gallery data", error);
-      return;
+    function setControlsEnabled(enabled) {
+      previous.disabled = !enabled;
+      next.disabled = !enabled;
+    }
+
+    function showError(message) {
+      setControlsEnabled(false);
+      mainImage.hidden = true;
+      mainImage.removeAttribute("src");
+      status.textContent = message;
+      gallery.classList.add("native-photo-error");
     }
 
     function show(index) {
       if (!images.length) return;
+
       current = (index + images.length) % images.length;
+      mainImage.hidden = false;
       mainImage.src = images[current].url;
       mainImage.alt = images[current].caption || ("Lab photograph " + (current + 1));
       status.textContent = (current + 1) + " / " + images.length;
@@ -1112,36 +1234,75 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         var active = i === current;
         button.classList.toggle("is-active", active);
         button.setAttribute("aria-current", active ? "true" : "false");
+
         if (active) {
-          button.scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"});
+          button.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest"
+          });
         }
       });
     }
 
+    setControlsEnabled(false);
+
+    try {
+      images = await getGalleryImages(gallery);
+    } catch (error) {
+      console.error("Cannot load gallery", error);
+      showError(error.message);
+      return;
+    }
+
+    if (!images.length) {
+      var folder = gallery.getAttribute("data-github-folder");
+      showError(folder ? ("No image files found in " + folder + ".") : "No photos found.");
+      return;
+    }
+
+    gallery.classList.remove("native-photo-error");
+    thumbnails.textContent = "";
+
     images.forEach(function (image, index) {
       var button = document.createElement("button");
       var thumbnail = document.createElement("img");
+
       button.type = "button";
       button.className = "native-photo-thumb-button";
       button.setAttribute("aria-label", "Show photo " + (index + 1));
+
       thumbnail.src = image.url;
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
+
       button.appendChild(thumbnail);
-      button.addEventListener("click", function () { show(index); });
+      button.addEventListener("click", function () {
+        show(index);
+      });
       thumbnails.appendChild(button);
     });
 
-    previous.addEventListener("click", function () { show(current - 1); });
-    next.addEventListener("click", function () { show(current + 1); });
+    setControlsEnabled(images.length > 1);
+
+    previous.addEventListener("click", function () {
+      show(current - 1);
+    });
+
+    next.addEventListener("click", function () {
+      show(current + 1);
+    });
+
     gallery.addEventListener("keydown", function (event) {
       if (event.key === "ArrowLeft") show(current - 1);
       if (event.key === "ArrowRight") show(current + 1);
     });
+
     mainImage.addEventListener("error", function () {
       console.error("Photo not found:", mainImage.src);
       mainImage.classList.add("native-photo-error");
     });
+
     mainImage.addEventListener("load", function () {
       mainImage.classList.remove("native-photo-error");
     });
@@ -1150,7 +1311,9 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   }
 
   function start() {
-    document.querySelectorAll(".native-photo-gallery").forEach(initialiseGallery);
+    document.querySelectorAll(".native-photo-gallery").forEach(function (gallery) {
+      initialiseGallery(gallery);
+    });
   }
 
   if (document.readyState === "loading") {
