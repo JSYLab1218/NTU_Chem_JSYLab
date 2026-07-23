@@ -320,6 +320,46 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="publications-uniform-image-style">
+/*
+ * 統一 Publications 頁面的研究圖片尺寸。
+ * 使用 object-fit: contain，避免裁切論文示意圖或文字。
+ */
+body.wsite-page-publications #wsite-content .wsite-image {
+  text-align: center !important;
+}
+
+body.wsite-page-publications #wsite-content .wsite-image > a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 520px !important;
+  max-width: 100% !important;
+  aspect-ratio: 13 / 8 !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+}
+
+body.wsite-page-publications #wsite-content .wsite-image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* 手機版維持相同比例，但縮至畫面寬度 */
+@media screen and (max-width: 600px) {
+  body.wsite-page-publications #wsite-content .wsite-image > a {
+    width: 100% !important;
+  }
+}
+</style>
+
 </head>
 	<body class="header-page  wsite-page-publications  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 

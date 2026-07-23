@@ -320,6 +320,42 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="members-uniform-photo-style">
+/* 統一 Members 頁面所有成員照片的顯示尺寸 */
+body.wsite-page-members #wsite-content .wsite-image {
+  text-align: center !important;
+}
+
+body.wsite-page-members #wsite-content .wsite-image > a {
+  display: inline-block !important;
+  width: 260px !important;
+  max-width: 100% !important;
+}
+
+body.wsite-page-members #wsite-content .wsite-image img {
+  display: block !important;
+  width: 260px !important;
+  height: 320px !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+/* 手機螢幕稍微縮小，避免超出畫面 */
+@media screen and (max-width: 480px) {
+  body.wsite-page-members #wsite-content .wsite-image > a {
+    width: 220px !important;
+  }
+
+  body.wsite-page-members #wsite-content .wsite-image img {
+    width: 220px !important;
+    height: 270px !important;
+  }
+}
+</style>
+
 </head>
 	<body class="header-page  wsite-page-members  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
@@ -622,7 +658,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div><div class="wsite-image wsite-image-border-thick " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="uploads/1/2/2/8/122804110/2_orig.jpg" alt="Picture" style="width:267;max-width:100%" />
+<img src="uploads/1/2/2/8/122804110/img-1854_orig.jpg" alt="Picture" style="width:267;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -637,42 +673,52 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </div></div></div>
 
 <div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
+  <table class="wsite-multicol-table" style="width:100%;">
+    <tbody class="wsite-multicol-tbody">
 
-<div><div class="wsite-image wsite-image-border-thick " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
-<a>
-<img src="uploads/1/2/2/8/122804110/line-album-250717-1_orig.jpg" alt="圖片" style="width:auto;max-width:100%" />
-</a>
-<div style="display:block;font-size:90%"></div>
-</div></div>
+      <!-- 第一列：汪學謙、賴安荷 -->
+      <tr class="wsite-multicol-tr">
+        <td class="wsite-multicol-col" style="width:50%; padding:0 15px; vertical-align:top;">
+          <div><div class="wsite-image wsite-image-border-thick" style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center;">
+            <a><img src="uploads/1/2/2/8/122804110/IMG_3593.jpeg" alt="汪學謙" style="width:auto;max-width:100%;" /></a>
+            <div style="display:block;font-size:90%"></div>
+          </div></div>
+          <div class="paragraph" style="text-align:center;">
+            <strong style="color:#3f3f3f;font-size:24px;">Hsueh-Chien Uang 汪學謙</strong><br />
+            <span style="color:#3f3f3f;">July 2026-present<br />B.S. 2026, National Taiwan University</span>
+          </div>
+        </td>
 
-<div class="paragraph" style="text-align:center;"><strong><font color="#3f3f3f"><font size="5">Hsueh-Chien Uang &#27754;&#23416;&#35609;</font></font></strong><br /><font color="#3f3f3f">July 2026-present<br />&#8203;</font><span style="color:rgb(63, 63, 63)">&#8203;B.S. 2026, National Taiwan University</span><br /></div>
+        <td class="wsite-multicol-col" style="width:50%; padding:0 15px; vertical-align:top;">
+          <div><div class="wsite-image wsite-image-border-thick" style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center;">
+            <a><img src="uploads/1/2/2/8/122804110/An Ho.jpg" alt="賴安荷" style="width:auto;max-width:100%;" /></a>
+            <div style="display:block;font-size:90%"></div>
+          </div></div>
+          <div class="paragraph" style="text-align:center;">
+            <strong style="color:#3f3f3f;font-size:24px;">An-Ho Lai 賴安荷</strong><br />
+            <span style="color:#3f3f3f;">July 2026-present<br />B.S. 2025, National Taiwan University</span>
+          </div>
+        </td>
+      </tr>
 
+      <!-- 第二列：林佑謙、空白 -->
+      <tr class="wsite-multicol-tr">
+        <td class="wsite-multicol-col" style="width:50%; padding:40px 15px 0; vertical-align:top;">
+          <div><div class="wsite-image wsite-image-border-thick" style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center;">
+            <a><img src="uploads/1/2/2/8/122804110/581719639_orig.jpg" alt="林佑謙" style="width:auto;max-width:100%;" /></a>
+            <div style="display:block;font-size:90%"></div>
+          </div></div>
+          <div class="paragraph" style="text-align:center;">
+            <strong style="color:#3f3f3f;font-size:24px;">Yu-Chien Lin 林佑謙</strong><br />
+            <span style="color:#3f3f3f;">July 2026-present<br />B.S. 2026, National Tsing Hua University</span>
+          </div>
+        </td>
 
-					
-				</td>				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
+        <td class="wsite-multicol-col" style="width:50%; padding:40px 15px 0; vertical-align:top;"></td>
+      </tr>
 
-<div><div class="wsite-image wsite-image-border-thick " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
-<a>
-<img src="uploads/1/2/2/8/122804110/581719639_orig.jpg" alt="圖片" style="width:269;max-width:100%" />
-</a>
-<div style="display:block;font-size:90%"></div>
-</div></div>
-
-<div class="paragraph" style="text-align:center;"><strong style="color:rgb(63, 63, 63)"><font size="5" style="color:rgb(81, 81, 81)">Yu-Chien Lin &#26519;&#20305;&#35609;<br />&#8203;</font></strong><span style="color:rgb(63, 63, 63)">July 2026-present</span><br /><span style="color:rgb(63, 63, 63)">BS. 2026, National Tsing Hua University</span></div>
-
-
-					
-				</td>			</tr>
-		</tbody>
-	</table>
+    </tbody>
+  </table>
 </div></div></div>
 
 <h2 class="wsite-content-title">Undergraduate Students</h2>

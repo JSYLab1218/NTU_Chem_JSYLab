@@ -410,6 +410,73 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="home-image-size-adjustments">
+/* 首頁最新論文圖片：放大至所在欄位的完整寬度 */
+body.wsite-page-index #wsite-content
+img[src*="ange70631-gra-0001-m.jpg"] {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 580px !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+body.wsite-page-index #wsite-content
+.wsite-image:has(img[src*="ange70631-gra-0001-m.jpg"]) {
+  text-align: center !important;
+}
+
+/* Contact Us：縮小地址、電話與信箱圖示 */
+body.wsite-page-index #wsite-content
+img[src*="maps-and-flags-1_orig.png"],
+body.wsite-page-index #wsite-content
+img[src*="phone-1_orig.png"],
+body.wsite-page-index #wsite-content
+img[src*="mail-1_orig.png"] {
+  display: block !important;
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+body.wsite-page-index #wsite-content
+.wsite-image:has(img[src*="maps-and-flags-1_orig.png"]),
+body.wsite-page-index #wsite-content
+.wsite-image:has(img[src*="phone-1_orig.png"]),
+body.wsite-page-index #wsite-content
+.wsite-image:has(img[src*="mail-1_orig.png"]) {
+  text-align: center !important;
+}
+
+/* 圖示縮小後，減少 Contact Us 區塊上方的視覺空白 */
+body.wsite-page-index .wsite-background-5 {
+  min-height: 620px !important;
+  height: auto !important;
+  padding-bottom: 60px !important;
+}
+
+@media screen and (max-width: 700px) {
+  body.wsite-page-index #wsite-content
+  img[src*="maps-and-flags-1_orig.png"],
+  body.wsite-page-index #wsite-content
+  img[src*="phone-1_orig.png"],
+  body.wsite-page-index #wsite-content
+  img[src*="mail-1_orig.png"] {
+    width: 75px !important;
+    height: 75px !important;
+  }
+
+  body.wsite-page-index #wsite-content
+  img[src*="ange70631-gra-0001-m.jpg"] {
+    max-width: 100% !important;
+  }
+}
+</style>
+
 </head>
 	<body class="header-page  wsite-page-index  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
