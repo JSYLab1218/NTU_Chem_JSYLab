@@ -320,6 +320,42 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="members-uniform-photo-style">
+/* 統一 Members 頁面所有成員照片的顯示尺寸 */
+body.wsite-page-members #wsite-content .wsite-image {
+  text-align: center !important;
+}
+
+body.wsite-page-members #wsite-content .wsite-image > a {
+  display: inline-block !important;
+  width: 260px !important;
+  max-width: 100% !important;
+}
+
+body.wsite-page-members #wsite-content .wsite-image img {
+  display: block !important;
+  width: 260px !important;
+  height: 320px !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+/* 手機螢幕稍微縮小，避免超出畫面 */
+@media screen and (max-width: 480px) {
+  body.wsite-page-members #wsite-content .wsite-image > a {
+    width: 220px !important;
+  }
+
+  body.wsite-page-members #wsite-content .wsite-image img {
+    width: 220px !important;
+    height: 270px !important;
+  }
+}
+</style>
+
 </head>
 	<body class="header-page  wsite-page-members  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
